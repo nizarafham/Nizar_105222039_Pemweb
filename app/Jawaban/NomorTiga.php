@@ -20,18 +20,30 @@ class NomorTiga {
 		return response()->json($data); 
 	}
 	
-
-	public function update (Request $request) {
-
-		// Tuliskan code mengupdate 1 jadwal
-		return redirect()->route('event.home');
+	public function update(Request $request) {
+		$event = Event::find($request->id); 
+		
+		if ($event) {
+			$event->name = $request->name;
+			$event->start = $request->start;
+			$event->end = $request->end;
+			$event->save(); 
+	
+			return redirect()->route('event.home')->with('message', ['Jadwal berhasil diupdate!', 'success']);
+		}
+	
+		return redirect()->route('event.home')->with('message', ['Gagal mengupdate jadwal.', 'danger']);
 	}
 
-	public function delete (Request $request) {
-
-		// Tuliskan code menghapus 1 jadwal
+	public function delete(Request $request) {
+		$event = Event::find($request->id); 
+		if ($event) {
+			$event->delete(); 
+		}
+	
 		return redirect()->route('event.home');
 	}
+	
 }
 
 ?>

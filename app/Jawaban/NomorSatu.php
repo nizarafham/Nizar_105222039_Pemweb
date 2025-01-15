@@ -52,7 +52,7 @@ class NomorSatu {
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('event.home')->with('success', 'Registration successful! Please login.');
+        return redirect()->route('event.home')->with('message', ['Register successful, Please Login!', 'success']);;
     }
 
 	public function logout(Request $request)

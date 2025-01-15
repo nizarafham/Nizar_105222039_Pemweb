@@ -29,6 +29,12 @@ class SchedulerController extends Controller {
         return $nomorEmpat->getJson(); 
     }
 
+    public function getData (Request $request) {
+
+        $nomorTiga = new NomorTiga(); 
+        return $nomorTiga->getData($request);
+    }
+
     public function getSelectedData (Request $request) {
 
         $nomorTiga = new NomorTiga(); 
