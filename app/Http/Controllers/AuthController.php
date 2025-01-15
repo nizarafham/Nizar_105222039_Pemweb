@@ -13,6 +13,12 @@ class AuthController extends Controller {
         return $nomorSatu->auth($request);
     }
 
+    public function register (Request $request) {
+
+        $nomorSatu = new NomorSatu();
+        return $nomorSatu->register($request);
+    }
+
     public function logout (Request $request) {
 
         $nomorSatu = new NomorSatu();

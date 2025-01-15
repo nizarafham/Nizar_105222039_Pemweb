@@ -8,12 +8,24 @@ use App\Models\Event;
 
 class NomorDua {
 
-	public function submit (Request $request) {
+	public function submit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+        ]);
 
-		// Tuliskan code untuk menyimpan data Jadwal
-		
-		return redirect()->route('event.home');
-	}
+        Event::create([
+            'user_id' => Auth::id(), 
+            'name' => $request->name,
+            'start' => $request->start,
+            'end' => $request->end,
+        ]);
+
+        return redirect()->route('event.home')->with('message', ['Jadwal berhasil ditambahkan!', 'success']);
+    }
+	
 }
 
 ?>

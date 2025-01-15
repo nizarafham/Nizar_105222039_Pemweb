@@ -8,18 +8,18 @@ use App\Models\Event;
 
 class NomorTiga {
 
-	public function getData () {
-		// Tuliskan code mengambil semua data jadwal user, simpan di variabel $data 
-		$data = [];
-		return $data;
-	}
-
-	public function getSelectedData (Request $request) {
-
-		// Tuliskan code mengambil 1 data jadwal user dengan id jadwal, simpan di variabel $data 
-		$data = [];
+	public function getData() {
+		$data = Event::where('user_id', Auth::id())->get();
+		
 		return response()->json($data);
 	}
+	
+
+	public function getSelectedData(Request $request) {
+		$data = Event::find($request->id); 
+		return response()->json($data); 
+	}
+	
 
 	public function update (Request $request) {
 

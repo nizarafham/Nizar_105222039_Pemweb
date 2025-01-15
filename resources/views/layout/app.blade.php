@@ -140,7 +140,7 @@
         <script src="{{ asset('argon/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"> </script>
 
         @yield('addon-script')
-        
+
     </body>
 
 </html>

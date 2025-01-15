@@ -1,16 +1,29 @@
 <script type="text/javascript">
-	
-	$('.table-schedule').DataTable({
-		language: {
-			paginate: {
-				next: '<i class="bi bi-arrow-right"></i>',
-				previous: '<i class="bi bi-arrow-left"></i>'
-			},
-			emptyTable: "Data tidak ditemukan",
-		},
-	});
-
-	// Tuliskan trigger saat menekan tombol edit
-	// Di dalam trigger tersebut, tambahkan API untuk meload data 1 jadwal
-
+$(document).ready(function() {
+        $('.table-schedule').DataTable({
+            language: {
+                paginate: {
+                    next: '<i class="bi bi-arrow-right"></i>',
+                    previous: '<i class="bi bi-arrow-left"></i>'
+                },
+                emptyTable: "Data tidak ditemukan",
+            },
+            ajax: {
+                url: '{{ route('event.getData') }}', // Endpoint untuk mengambil data
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'name' },
+                { data: 'start' },
+                { data: 'end' },
+                { data: 'id', render: function(data) {
+                    return `
+                        <button class="btn btn-primary edit-btn" data-id="${data}">Edit</button>
+                        <button class="btn btn-danger delete-btn" data-id="${data}">Delete</button>
+                    `;
+                }}
+            ]
+        });
+    });
 </script>

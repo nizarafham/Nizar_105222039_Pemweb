@@ -1,9 +1,15 @@
 <table class="table table-schedule">
     <thead>
-        
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Actions</th>
+        </tr>
     </thead>
     <tbody>
-        
+        <!-- Data akan dimuat oleh DataTable via Ajax -->
     </tbody>
 </table>
 

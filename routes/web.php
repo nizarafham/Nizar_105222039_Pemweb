@@ -17,6 +17,7 @@ use App\Http\Controllers\SchedulerController;
 */
 
 Route::post('auth', [AuthController::class, 'auth'])->name('auth');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('event')->name('event.')->group(function(){
